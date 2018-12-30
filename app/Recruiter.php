@@ -1,6 +1,6 @@
 <?php
 
-
+namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -19,6 +19,11 @@ class Recruiter extends Model
 
         return $this->morphOne('App\User','ownerable');
 
+    }
+
+    public function jobs()
+    {
+        return $this->hasMany('App\Job');
     }
 
 

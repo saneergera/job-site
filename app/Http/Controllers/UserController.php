@@ -26,7 +26,7 @@ class UserController extends Controller
         $user =  User::create([
             'email'=>$request->email,
             'password'=>bcrypt($request->password),
-            'ownerable_type'=>"App\Recruiter",
+            'ownerable_type'=>"recruiter",
             'ownerable_id'=> $recruiter->id
         ]);
 
@@ -62,7 +62,7 @@ class UserController extends Controller
         $user =  User::create([
             'email'=>$request->email,
             'password'=>bcrypt($request->password),
-            'ownerable_type'=>"App\Applicant",
+            'ownerable_type'=>"applicant",
             'ownerable_id' => $applicant->id
         ]);
 

@@ -20,3 +20,21 @@ Route::post('register/recuiter', 'UserController@register_recuiter');
 Route::group(['middleware' => 'auth:api'], function(){
 Route::post('details', 'UserController@details');
 });
+
+Route::group(['middleware' => 'auth:api'], function(){
+    Route::post('details', 'UserController@details');
+});
+
+Route::group(['prefix' => 'recruiter',  'middleware' => 'auth:api'], function()
+{
+    Route::post('jobs','RecruiterController@create');
+    Route::get('jobs','RecruiterController@index');
+    Route::get('jobs/{id}/applicants','RecruiterController@show');
+});
+
+Route::group(['prefix' => 'applicant',  'middleware' => 'auth:api'], function()
+{
+    Route::get('jobs','ApplicantController@index');
+    Route::get('apply/{id}','ApplicantController@create');
+   ;
+});
